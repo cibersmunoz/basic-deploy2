@@ -51,3 +51,38 @@ SHH_HOST=ip
 SSH_USER=usuario
 SSH_PASSWORD=contraseña
 ```
+
+7. Clonamos el repo en el VPS
+```bash
+git clone <URL>
+```
+
+8. Actualizamos el VPS y descargamos las dependencias
+
+```bash
+apt update
+apt install nodejs npm -y
+npm install -g pm2
+```
+
+9. Instalamos dependencia de npm y probamos a lanzar la app
+
+```bash
+cd <repo>
+npm install
+node server.js
+curl <ip>:30000
+```
+10. Usamos `pm2` para lanzar la app en segundo plano
+
+```bash
+pm2 start server.js --name <nombre>
+```
+
+11. Comenzamos a crear el deploy, creamos la carpeta `.github` y dentro otra carpeta `workflows`, por último creamos, `deploy.yml`
+
+```bash
+.github/
+└── workflows
+    └── deploy.yml
+```

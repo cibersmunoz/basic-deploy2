@@ -1,0 +1,17 @@
+name: Deploy en VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        # Define entorno y clona el repo en el VPS de stagging.
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            #Instalamos sshpass
+            - name: Install sshpass
+              run: sudo apt-get install sshpass -y
